@@ -1,0 +1,40 @@
+.header {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 45px;
+  align-items: center;
+}
+.searchIcon {
+  display: flex;
+  align-items: center;
+}
+.iconStyle {
+  color: white;
+  font-size: 22px;
+  opacity: 0.7;
+}
+.navLinks {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+
+.navLinks li {
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.chevronIcon {
+  margin-left: 10px;
+  opacity: 0.8;
+}
+
+.iconWrapper{
+    margin-left: 15px;
+    font-size: 22px;
+    color: white;
+    opacity: 0.8;
+}
