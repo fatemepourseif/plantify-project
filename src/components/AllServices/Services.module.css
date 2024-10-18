@@ -1,0 +1,48 @@
+.servicesContainer {
+  width: 95%;
+  text-align: center;
+  margin: auto;
+}
+.servicesContainer h2 {
+  font-weight: 300;
+  font-size: 30px;
+}
+.servicesContainer p {
+  font-size: 20px;
+}
+.servicesContainer ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 80px auto;
+  padding: 0;
+}
+.servicesContainer ul li {
+  flex: 1;
+  margin: 0 15px;
+  text-align: center;
+  position: relative;
+}
+.servicesContainer li img {
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+}
+.servicesContainer ul li div {
+  position: absolute;
+  left: 13%;
+  bottom: 35%;
+}
+.servicesContainer ul li div h3 {
+  color: white;
+  font-size: 30px;
+  font-weight: 400;
+}
+.servicesContainer ul li div button {
+  color: white;
+  border: 2px solid white;
+  padding: 10px 20px;
+  background-color: transparent;
+  font-size: 15px;
+  font-weight: 400;
+}
