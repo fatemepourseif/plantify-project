@@ -1,36 +1,66 @@
 import classes from "./PlantProducts.module.css";
 
-import img1 from "./../../../assets/Img1.webp";
-import img2 from "../../../assets/img2.webp"
-import img3 from "../../../assets/img3.webp"
-import img4 from "../../../assets/img4.webp"
-import img5 from "../../../assets/img5.webp"
-import img6 from "../../../assets/img6.webp"
-import img7 from "../../../assets/img7.webp"
-import img8 from "../../../assets/img8.webp"
-const DUMMY_DATA = [
-  { id: "i1", text: "ALL PLANTS", imageSrc: img1 },
-  { id: "i2", text: "POTS AND BASKETS", imageSrc: img2 },
-  { id: "i3", text: "PET FRIENDLY", imageSrc: img3 },
-  { id: "i4", text: "EASY CARE PLANTS", imageSrc: img4 },
-  { id: "i5", text: "HANGING PLANTS", imageSrc: img5 },
-  { id: "i6", text: "XL FLOOR STANDING PLANTS", imageSrc: img6 },
-  { id: "i7", text: "MOSSBALLS", imageSrc: img7 },
-  { id: "i8", text: "HOMEWARE", imageSrc: img8 },
-];
+import { useEffect, useState } from "react";
 
 const PlantProducts = () => {
+  const [plants, setPlants] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [httpError, setHttpError] = useState();
+  useEffect(() => {
+    const fetchPlants = async () => {
+      setIsLoading(true);
+      const response = await fetch(
+        "https://plantifyproject-b3146-default-rtdb.firebaseio.com/plants.json"
+      );
+
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+
+      const responseData = await response.json();
+      const loadedPlants = [];
+      for (const key in responseData) {
+        loadedPlants.push({
+          id: key,
+          text: responseData[key].text,
+          imageSrc: responseData[key].imageSrc,
+        });
+      }
+      console.log(responseData);
+      console.log(loadedPlants);
+      setPlants(loadedPlants);
+      setIsLoading(false);
+    };
+
+    fetchPlants().catch((error) => {
+      setIsLoading(false);
+      setHttpError(error.message);
+    });
+  }, []);
+
+  if (httpError) {
+    return (
+      <section className={classes.plantsError}>
+        <p>{httpError}</p>
+      </section>
+    );
+  }
+
   return (
     <div>
-      <h1 className={classes.title}>SHOP BY CATEGORY</h1>
-      <ul className={classes.list}>
-        {DUMMY_DATA.map((item) => (
-          <li>
-            <img src={item.imageSrc} alt={item.text} />
-            <p>{item.text}</p>
-          </li>
-        ))}
-      </ul>
+      <h1 className={classes.title}>
+        {isLoading ? "Loading..." : "SHOP BY CATEGORY"}
+      </h1>
+      {!isLoading && (
+        <ul className={classes.list}>
+          {plants.map((item) => (
+            <li key={item.id}>
+              <img src={item.imageSrc} alt={item.text} />
+              <p>{item.text}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

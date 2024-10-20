@@ -55,4 +55,11 @@
 .list li:hover p {
   opacity: 1;
 }
-
+.plantsLoading {
+  text-align: center;
+  color: black;
+}
+.plantsError {
+  text-align: center;
+  color: red;
+}

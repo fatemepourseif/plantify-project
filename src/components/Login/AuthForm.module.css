@@ -1,0 +1,85 @@
+.auth {
+  margin: 3rem auto;
+  width: 95%;
+  max-width: 25rem;
+  padding: 1rem;
+  text-align: center;
+}
+.auth h1 {
+  text-align: center;
+  color: black;
+  font-size: 37px;
+  font-weight: 400;
+  margin-bottom: 50px;
+}
+.control {
+  margin-bottom: 30px;
+}
+
+.control label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 10px;
+  text-align: start;
+}
+
+.control input {
+  font: inherit;
+  border: 1px solid rgb(212, 212, 212);
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+}
+.control input:focus {
+  border: 1px solid black;
+}
+.action {
+  color: white;
+  background-color: black;
+  width: 100%;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.5s ease-in-out;
+  overflow: hidden;
+}
+.action::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.137);
+  transition: right 0.5s ease;
+}
+
+.action:hover::before {
+  animation: slide-left 0.4s ease forwards;
+}
+
+.action:hover {
+  background-color: rgb(34, 34, 34);
+}
+@keyframes slide-left {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 100%;
+  }
+}
+.switchBtn {
+  cursor: pointer;
+}
+.error {
+  background-color: #fff6f6;
+  border: 1px solid #d02e2e;
+  color: #d02e2e;
+  margin-bottom: 15px;
+  padding: 10px;
+  text-align: left;
+  font-size: 15px;
+  list-style: disc outside;
+}

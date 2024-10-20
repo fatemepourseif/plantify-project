@@ -4,6 +4,7 @@ import { faUser, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/Plantify_Website_Logo.avif";
 
 import classes from "./NavBar.module.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -19,7 +20,10 @@ const Navbar = () => {
         <li>
           SERVICES <FaChevronDown className={classes.chevronIcon} />
         </li>
-        <img src={logo} alt="Logo" />
+        <Link to="/">
+          <img src={logo} alt="Logo" />
+        </Link>
+
         <li>
           PLANT CARE <FaChevronDown className={classes.chevronIcon} />
         </li>
@@ -29,10 +33,10 @@ const Navbar = () => {
       </ul>
 
       <div className={classes.icons}>
-        <span className={classes.iconWrapper}>
+        <Link to="/login" className={classes.iconWrapper}>
           <FontAwesomeIcon icon={faUser} />
-        </span>
-        <span className={classes.iconWrapper} >
+        </Link>
+        <span className={classes.iconWrapper}>
           <FontAwesomeIcon icon={faShoppingBag} />
         </span>
       </div>
